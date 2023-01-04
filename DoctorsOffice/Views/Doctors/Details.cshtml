@@ -1,3 +1,14 @@
 @{
     Layout = "_Layout";
 }
+
+@using DoctorsOffice.Models
+@model DoctorsOffice.Models.Doctor
+
+<h1 class="jumbotron">Doctor's Details</h1>
+
+<h3>@Html.DisplayNameFor(model => model.Name): @Html.DisplayFor(model => model.Name)</h3>
+<h3>@Html.DisplayNameFor(model => model.Specialty): @Html.DisplayFor(model => model.Specialty)</h3>
+
+<p id="link">@Html.ActionLink("Back Home", "Index", "Home")</p>
+<p id="link">@Html.ActionLink("Back To List", "Index")</p>

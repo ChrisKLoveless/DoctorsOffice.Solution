@@ -25,12 +25,21 @@ namespace DoctorsOffice.Controllers
       return View();
     }
 
-        [HttpPost]
+    [HttpPost]
     public ActionResult Create(Doctor doctor)
     {
       _db.Doctors.Add(doctor);
       _db.SaveChanges();
       return RedirectToAction("Index");
     }
+
+    public ActionResult Details(int id)
+    {
+      Doctor thisDoctor = _db.Doctors
+          .Include(doctor => doctor.JoinEntites)
+          .FirstOrDefault(doctor => doctor.DoctorId == id);
+      return View(thisDoctor);
+    }
+
   }
 }
