@@ -17,3 +17,10 @@ div#footer {
 {
   text-align: center;
 }
+
+p#foot {
+  padding: 5px;
+  margin-right: 20px;
+  margin-left: 20px;
+  
+}

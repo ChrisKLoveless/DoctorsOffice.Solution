@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Mvc;
 using DoctorsOffice.Models;
 using System.Collections.Generic;
@@ -39,6 +40,21 @@ namespace DoctorsOffice.Controllers
           .Include(doctor => doctor.JoinEntites)
           .FirstOrDefault(doctor => doctor.DoctorId == id);
       return View(thisDoctor);
+    }
+
+    public ActionResult Edit(int id)
+    {
+      Doctor thisDoctor = _db.Doctors.FirstOrDefault(doctor => doctor.DoctorId == id);
+      ViewBag.DoctorId = new SelectList(_db.Doctors, "DoctorId", "Name");
+      return View(thisDoctor);
+    }
+
+    [HttpPost]
+    public ActionResult Edit(Doctor doctor)
+    {
+      _db.Doctors.Update(doctor);
+      _db.SaveChanges();
+      return RedirectToAction("Index");
     }
 
   }
