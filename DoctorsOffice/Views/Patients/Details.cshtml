@@ -1,0 +1,17 @@
+@{
+  Layout = "_Layout";
+}
+
+@using DoctorsOffice.Models
+@model DoctorsOffice.Models.Patient
+
+<h1 class="jumbotron">Patient Details</h1>
+<hr />
+<h3>@Html.DisplayNameFor(model => model.Name): @Html.DisplayFor(model => model.Name)</h3>
+<h3>@Html.DisplayNameFor(model => model.BirthDate): @Html.DisplayFor(model => model.BirthDate)</h3>
+
+
+<p>@Html.ActionLink("Back to list", "Index")</p>
+<p>@Html.ActionLink("Add a Patient", "AddItem", new { id = Model.PatientId })</p>
+<p>@Html.ActionLink("Edit Patient", "Edit", new { id = Model.PatientId })</p>
+<p>@Html.ActionLink("Delete Patient", "Delete", new { id = Model.PatientId })</p>

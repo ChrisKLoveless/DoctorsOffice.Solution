@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 
-namespace DoctorsOffice.Models{
+namespace DoctorsOffice.Models
+{
   public class Patient
   {
     public int PatientId { get; set; }
@@ -11,4 +12,4 @@ namespace DoctorsOffice.Models{
 
     public List<DoctorPatient> JoinEntites { get; }
     }
-  }
+}
