@@ -1,10 +1,11 @@
-# Project NAme
+# B and C's Healthcare Office
 
 #### Description
 
 ## Contributors
 
 * Chris Loveless
+* Brandon Fenk
 
 ## Description
 <!-- This project is a simple web application for a business to keep track of Stylists and their Clients. Stylists and Clients have a one to many relationship meaning each Client only belongs to one Stylist. A Stylist can have many clients. The application allows the user to create, update, delete, and view lists of the Stylists they employ and their corresponding clients. The app also includes fields for notes about the clients. -->
@@ -47,5 +48,5 @@
 * If any bugs are found please email a brief description to: ```chriskloveless@gmail.com```
 
 ## License
-Copyright (c) 2022 Chris Loveless
+Copyright (c) 2022 Chris Loveless and Brandon Fenk
 _[MIT](https://choosealicense.com/licenses/mit/)_
