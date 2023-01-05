@@ -1,0 +1,22 @@
+@{
+  Layout = "_Layout";
+}
+@using DoctorsOffice.Models
+@model DoctorsOffice.Models.Doctor
+
+<h1 class="jumbotron">Add a Patient</h1 class="jumbotron">
+
+<h4>Add a Patient to this Doctor: @Html.DisplayFor(model => model.Name)</h4>
+
+<hr>
+@using (Html.BeginForm())
+{
+    @Html.HiddenFor(model => model.DoctorId)
+
+    @Html.Label("Select Patient")
+    @Html.DropDownList("PatientId")<br>
+
+    <input type="submit" value="Save" class="btn btn-dark"/>
+}
+<br>
+<p class="btn btn-dark">@Html.ActionLink("Back to list of Doctors", "Index")</p>

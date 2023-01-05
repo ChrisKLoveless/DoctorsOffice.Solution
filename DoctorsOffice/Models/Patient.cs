@@ -10,6 +10,6 @@ namespace DoctorsOffice.Models
 
     public DateTime? BirthDate { get; set; }
 
-    public List<DoctorPatient> JoinEntites { get; }
+    public List<DoctorPatient> JoinEntities { get; }
     }
 }

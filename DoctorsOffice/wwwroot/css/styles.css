@@ -1,5 +1,11 @@
+a {
+  color: white;
+}
+
 body {
   text-align: center;
+  background-color: rgb(109, 177, 154);
+  font-family:'Josefin Sans', sans-serif;
 }
 
 div#footer {
@@ -13,9 +19,23 @@ div#footer {
   margin: auto;
 }
 
-.jumbotron
-{
+.jumbotron {
   text-align: center;
+  padding: 50px;
+  background: #333;
+  color: white;
+}
+
+li#doctor {
+  list-style-position: inside;
+  padding: 10px;
+  list-style-image: url(https://img.icons8.com/dotty/36/doctors-bag.png);
+}
+
+li#patient {
+  list-style-position: inside;
+  padding: 10px;
+  list-style-image: url(https://img.icons8.com/glyph-neue/48/cast.png);
 }
 
 p#foot {
@@ -24,3 +44,8 @@ p#foot {
   margin-left: 20px;
   
 }
+
+p#link {
+  color: rgb(168, 168, 14);
+}
+

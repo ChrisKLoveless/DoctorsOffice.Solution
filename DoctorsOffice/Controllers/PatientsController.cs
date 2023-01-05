@@ -33,10 +33,32 @@ namespace DoctorsOffice.Controllers
       return RedirectToAction("Index");
     }
 
+    public ActionResult AddDoctor(int id)
+    {
+      Patient thisPatient = _db.Patients.FirstOrDefault(patient => patient.PatientId == id);
+      ViewBag.DoctorId = new SelectList(_db.Doctors, "DoctorId", "Name");
+      return View(thisPatient);
+    }
+
+    [HttpPost]
+    public ActionResult AddDoctor(Patient patient, int doctorId)
+    {
+#nullable enable
+      DoctorPatient? joinEntity = _db.DoctorPatients.FirstOrDefault(join => (join.DoctorId == doctorId && join.PatientId == join.PatientId));
+#nullable disable
+      if (joinEntity == null && doctorId != 0)
+      {
+        _db.DoctorPatients.Add(new DoctorPatient() { DoctorId = doctorId, PatientId = patient.PatientId });
+        _db.SaveChanges();
+      }
+      return RedirectToAction("Details", new { id = patient.PatientId });
+    }
+
     public ActionResult Details(int id)
     {
       Patient thisPatient = _db.Patients
-          .Include(patient => patient.JoinEntites)
+          .Include(patient => patient.JoinEntities)
+          .ThenInclude(join => join.Doctor)
           .FirstOrDefault(patient => patient.PatientId == id);
       return View(thisPatient);
     }
@@ -51,6 +73,20 @@ namespace DoctorsOffice.Controllers
     public ActionResult Edit(Patient patient)
     {
       _db.Patients.Update(patient);
+      _db.SaveChanges();
+      return RedirectToAction("Index");
+    }
+    public ActionResult Delete(int id)
+    {
+      Patient thisPatient = _db.Patients.FirstOrDefault(patients => patients.PatientId == id);
+      return View(thisPatient);
+    }
+
+    [HttpPost, ActionName("Delete")]
+    public ActionResult DeleteConfirmed(int id)
+    {
+      Patient thisPatient = _db.Patients.FirstOrDefault(patients => patients.PatientId == id);
+      _db.Patients.Remove(thisPatient);
       _db.SaveChanges();
       return RedirectToAction("Index");
     }

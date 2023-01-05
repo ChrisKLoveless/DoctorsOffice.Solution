@@ -13,14 +13,14 @@
     }
     else
     {
-        <ul>
+        <ul class="row">
             @foreach (Doctor doctor in Model)
             {
-                <li>@Html.ActionLink($"{doctor.Name}", "Details", new { id = doctor.DoctorId }) | Specialty: @doctor.Specialty</li>
+                <li id="doctor">@Html.ActionLink($"{doctor.Name}", "Details", new { id = doctor.DoctorId }) | Specialty: @doctor.Specialty</li>
             }  
         </ul>
         
     }
-    <p id="link">@Html.ActionLink("Add new Doctor", "Create")</p>
-    <p id="link">@Html.ActionLink("Back Home", "Index", "Home")</p>
+
+    <p class="btn btn-dark" id="link">@Html.ActionLink("Add new Doctor", "Create")</p>
 </div>
