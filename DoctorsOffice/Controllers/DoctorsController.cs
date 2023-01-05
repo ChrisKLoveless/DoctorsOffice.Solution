@@ -29,9 +29,16 @@ namespace DoctorsOffice.Controllers
     [HttpPost]
     public ActionResult Create(Doctor doctor)
     {
+      if (!ModelState.IsValid)
+      {
+          return View(doctor);
+      }
+      else
+      {
       _db.Doctors.Add(doctor);
       _db.SaveChanges();
       return RedirectToAction("Index");
+      }
     }
 
     public ActionResult AddPatient(int id)
@@ -94,5 +101,13 @@ namespace DoctorsOffice.Controllers
       return RedirectToAction("Index");
     }
 
+    [HttpPost]
+    public ActionResult DeleteJoin(int joinId)
+    {
+      DoctorPatient joinEntry = _db.DoctorPatients.FirstOrDefault(entry => entry.DoctorPatientId == joinId);
+      _db.DoctorPatients.Remove(joinEntry);
+      _db.SaveChanges();
+      return RedirectToAction("Index");
+    }
   }
 }

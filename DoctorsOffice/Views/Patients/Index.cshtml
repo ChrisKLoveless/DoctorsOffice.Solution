@@ -11,10 +11,20 @@
   {
     <h3>No Patients have been added yet!</h3>
   } 
-
-  @foreach (Patient patient in Model)
+  else
   {
-    <li id="patient">@Html.ActionLink($"{patient.Name}", "Details", new { id = patient.PatientId })</li><br>
+    List<Patient> patientOrderList = new List<Patient>();
+    @foreach (Patient patient in Model)
+    {
+      patientOrderList.Add(patient);
+    }
+    List<Patient> SortedList = patientOrderList.OrderBy(patient => patient.BirthDate).ToList();
+  <ul>
+  @foreach (Patient p in SortedList)
+  {
+    <li id="patient">@Html.ActionLink($"{p.Name}", "Details", new { id = p.PatientId }) | Birth Date: @p.BirthDate</li><br>
+  }
+  </ul>
   }
 </div>
 <p class="btn btn-dark">@Html.ActionLink("Create a new Patient", "Create")</p>

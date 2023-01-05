@@ -17,12 +17,19 @@
 }
 else
 {
+List<DoctorPatient> PatientList = new List<DoctorPatient>();
+    @foreach(DoctorPatient patient in Model.JoinEntities)
+    {
+        PatientList.Add(patient);
+    }
+    List<DoctorPatient> sortedList = PatientList.OrderBy(DoctorPatient => DoctorPatient.Patient.BirthDate).ToList();
+
     <h4>This Doctor has the following Patients:</h4>
     <ul class="row">
-    @foreach (DoctorPatient join in Model.JoinEntities)
+    @foreach (DoctorPatient join in sortedList)
         {
-            <li id="patient">Patient: @join.Patient.Name</li>
-            @using (Html.BeginForm("DeleteJoin", "Items"))
+            <li id="patient">Patient: @join.Patient.Name | @join.Patient.BirthDate</li>
+            @using (Html.BeginForm("DeleteJoin", "Doctors"))
             {
                 @Html.Hidden("joinId", @join.DoctorPatientId)
                 <input type="submit" value="Delete" class="btn btn-dark" />
