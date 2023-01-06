@@ -1,7 +1,5 @@
 # B and C's Healthcare Office
 
-#### Description
-
 ## Contributors
 
 * Chris Loveless
