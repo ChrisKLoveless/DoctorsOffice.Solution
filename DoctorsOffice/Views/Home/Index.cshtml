@@ -1,10 +1,37 @@
 @{
     Layout = "_Layout";
 }
+    @using DoctorsOffice.Models;
 
 <h1 class="jumbotron"><u>Welcome to B and C's Healthcare Office</u></h1>
 
+<hr>
+
+<h4><u>List of Doctors</u></h4>
+@if (Model["Doctors"].Length == 0)
+{
+    <p>No Doctor have been added yet!</p>
+}
+<ul class="row">
+    @foreach (Doctor doc in Model["Doctors"])
+    {
+        <li id="doctor">@Html.ActionLink(@doc.Name, "Details", "Doctors", new { id = @doc.DoctorId})</li>
+    }
+</ul>
+
+<h4><u>List of Patients</u></h4>
+@if (Model["Patients"].Length == 0)
+{
+    <p>No Patients have been added yet!</p>
+}
+<ul class="row">
+    @foreach (Patient patient in Model["Patients"])
+    {
+        <li id="patient">@Html.ActionLink(@patient.Name, "Details", "Items", new { id = @patient.PatientId})</li>
+    }
+</ul>
+
+<hr>
+
 <p id="link">@Html.ActionLink("See list of Doctors", "Index", "Doctors")</p>
 <p id="foot">@Html.ActionLink("See list of Patients", "Index", "Patients")</p>
-
-

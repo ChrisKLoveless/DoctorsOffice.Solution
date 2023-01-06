@@ -4,8 +4,11 @@ a {
 
 body {
   text-align: center;
-  background-color: rgb(109, 177, 154);
-  font-family:'Josefin Sans', sans-serif;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.527), rgba(0, 0, 0, 0.527)), url("http://cdn.home-designing.com/wp-content/uploads/2011/04/luxury-ward-interior.jpg");
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center center;
+  color: white;
 }
 
 div#footer {

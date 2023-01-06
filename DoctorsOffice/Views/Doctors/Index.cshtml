@@ -4,6 +4,7 @@
 
 @using DoctorsOffice.Models;
 
+
 <div class="container">
     <h1 class="jumbotron">List of Doctors</h1>
 
@@ -16,11 +17,12 @@
         <ul class="row">
             @foreach (Doctor doctor in Model)
             {
-                <li id="doctor">@Html.ActionLink($"{doctor.Name}", "Details", new { id = doctor.DoctorId }) | Specialty: @doctor.Specialty</li>
-            }  
+                <li id="doctor">@Html.ActionLink($"{doctor.Name}", "Details", new { id = doctor.DoctorId }) | Specialty:
+                    @doctor.Specialty</li>
+            }
         </ul>
-        
     }
 
     <p class="btn btn-dark" id="link">@Html.ActionLink("Add new Doctor", "Create")</p>
+    <p class="btn btn-dark" id="link">@Html.ActionLink("Search for a Doctor", "Search")</p>
 </div>

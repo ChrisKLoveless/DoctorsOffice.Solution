@@ -109,5 +109,21 @@ namespace DoctorsOffice.Controllers
       _db.SaveChanges();
       return RedirectToAction("Index");
     }
+
+    public ActionResult Search()
+    {
+      return View();
+    }
+
+    [HttpPost]
+    public ActionResult Search(string search)
+    {
+      List<Doctor> foundDoctors = _db.Doctors
+        .Where(doctor => doctor.Name.Contains(search))
+        .ToList();
+        // List<DoctorPatient> doctorPatient = _db.DoctorPatients.ToList();
+        ViewBag.Doctors = foundDoctors;
+      return View();
+    }
   }
 }
